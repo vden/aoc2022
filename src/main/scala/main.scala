@@ -1,5 +1,6 @@
 @main
 def main(): Unit = {
-  Day1()
-  Day2()
+  // Day1()
+  // Day2()
+  Day3()
 }
