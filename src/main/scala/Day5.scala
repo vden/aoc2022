@@ -1,7 +1,7 @@
 import scala.collection.mutable
 import scala.util.Try
 
-class Day5(inputFile: String) extends Routines {
+class Day5(day: Int) extends Routines {
   private case class Command(num: Int, from: Int, to: Int)
 
   private def parseCommand(line: String): Command = {
@@ -25,7 +25,7 @@ class Day5(inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { data =>
+    withData(day) { data =>
 
       val cargo: Vector[mutable.Stack[Char]] = data
         .takeWhile(_.contains('['))
@@ -60,6 +60,6 @@ class Day5(inputFile: String) extends Routines {
 
 object Day5 {
   def apply(): Try[Unit] = {
-    new Day5("src/inputs/day5.txt").execute()
+    new Day5(5).execute()
   }
 }

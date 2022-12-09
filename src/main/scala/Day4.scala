@@ -1,6 +1,6 @@
 import scala.util.Try
 
-class Day4(inputFile: String) extends Routines {
+class Day4(day: Int) extends Routines {
   private def containsRange(a: Range, b: Range): Boolean = {
     (a.start <= b.start && b.end <= a.end) || (b.start <= a.start && a.end <= b.end)
   }
@@ -15,7 +15,7 @@ class Day4(inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { _data =>
+    withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
       val countDuplicate = data1
@@ -35,6 +35,6 @@ class Day4(inputFile: String) extends Routines {
 
 object Day4 {
   def apply(): Try[Unit] = {
-    new Day4("src/inputs/day4.txt").execute()
+    new Day4(4).execute()
   }
 }

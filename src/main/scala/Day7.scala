@@ -1,7 +1,7 @@
 import scala.util.Try
 import scala.collection.mutable
 
-class Day7(inputFile: String) extends Routines {
+class Day7(day: Int) extends Routines {
 
   private class Node(var size: Int) {
     val nodes: mutable.Map[String, Node] = mutable.Map.empty
@@ -43,7 +43,7 @@ class Day7(inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { data =>
+    withData(day) { data =>
 
       var cwd: Array[String] = Array.empty
       val tree = new Tree()
@@ -84,6 +84,6 @@ class Day7(inputFile: String) extends Routines {
 
 object Day7 {
   def apply(): Try[Unit] = {
-    new Day7("src/inputs/day7.txt").execute()
+    new Day7(7).execute()
   }
 }

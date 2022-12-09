@@ -3,7 +3,7 @@
 .bsp
 .metals
 project/metals.sbt
-
+src/inputs
 # vs code
 .vscode
 

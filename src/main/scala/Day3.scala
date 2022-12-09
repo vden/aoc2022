@@ -1,6 +1,6 @@
 import scala.util.Try
 
-class Day3(inputFile: String) extends Routines {
+class Day3(day: Int) extends Routines {
   private def priority(n: Char) = {
     n.toByte match
     {
@@ -19,7 +19,7 @@ class Day3(inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { _data =>
+    withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
       val sumPriorities = data1.map { line =>
@@ -35,6 +35,6 @@ class Day3(inputFile: String) extends Routines {
 
 object Day3 {
   def apply(): Try[Unit] = {
-    new Day3("src/inputs/day3.txt").execute()
+    new Day3(3).execute()
   }
 }

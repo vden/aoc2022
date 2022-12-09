@@ -1,6 +1,6 @@
 import scala.util.Try
 
-class Day2(val inputFile: String) extends Routines {
+class Day2(day: Int) extends Routines {
   enum Throw {
     case Rock, Paper, Scissors
 
@@ -79,7 +79,7 @@ class Day2(val inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { _data =>
+    withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
       val s = data1.map(checkThrow).sum
@@ -93,6 +93,6 @@ class Day2(val inputFile: String) extends Routines {
 
 object Day2 {
   def apply(): Try[Unit] = {
-    new Day2("src/inputs/day2.txt").execute()
+    new Day2(2).execute()
   }
 }

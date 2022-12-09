@@ -6,3 +6,5 @@ lazy val root = (project in file("."))
   .settings(
     name := "aoc2022"
   )
+
+libraryDependencies += "org.scalaj" % "scalaj-http_2.13" % "2.4.2"

@@ -1,6 +1,6 @@
 import scala.util.Try
 
-class Day6(inputFile: String) extends Routines {
+class Day6(day: Int) extends Routines {
   private def findMark(size: Int)(data: String) = {
     data
       .view
@@ -9,7 +9,7 @@ class Day6(inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { _data =>
+    withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
       val startOfPacket = data1.map(findMark(4)).toList.head
@@ -23,6 +23,6 @@ class Day6(inputFile: String) extends Routines {
 
 object Day6 {
   def apply(): Try[Unit] = {
-    new Day6("src/inputs/day6.txt").execute()
+    new Day6(6).execute()
   }
 }

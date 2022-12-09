@@ -1,7 +1,7 @@
 import scala.util.Try
 import scala.collection.mutable
 
-class Day9(inputFile: String) extends Routines {
+class Day9(day: Int) extends Routines {
   private case class Move(dir: Char, num: Int)
 
   private def moveTail(point: Point, last: Point): Point = {
@@ -24,7 +24,7 @@ class Day9(inputFile: String) extends Routines {
   }
 
   private def execute() = {
-    withData(inputFile) { data =>
+    withData(day) { data =>
       var head = Point(0, 0)
       val map: mutable.ArrayBuffer[Point] = mutable.ArrayBuffer.from(List(head))
 
@@ -80,6 +80,6 @@ class Day9(inputFile: String) extends Routines {
 
 object Day9 {
   def apply(): Try[Unit] = {
-    new Day9("src/inputs/day9.txt").execute()
+    new Day9(9).execute()
   }
 }
