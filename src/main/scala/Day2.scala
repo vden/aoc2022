@@ -1,6 +1,8 @@
+import utils.AoC
+
 import scala.util.Try
 
-class Day2(day: Int) extends Routines {
+class Day2(day: Int) extends AoC {
   enum Throw {
     case Rock, Paper, Scissors
 

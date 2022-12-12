@@ -1,7 +1,9 @@
+import utils.{AoC, Geometry}
+
 import scala.util.Try
 import scala.collection.mutable
 
-class Day9(day: Int) extends Routines {
+class Day9(day: Int) extends AoC with Geometry {
   private case class Move(dir: Char, num: Int)
 
   private def moveTail(point: Point, last: Point): Point = {

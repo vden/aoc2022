@@ -1,6 +1,8 @@
+import utils.AoC
+
 import scala.util.Try
 
-class Day4(day: Int) extends Routines {
+class Day4(day: Int) extends AoC {
   private def containsRange(a: Range, b: Range): Boolean = {
     (a.start <= b.start && b.end <= a.end) || (b.start <= a.start && a.end <= b.end)
   }

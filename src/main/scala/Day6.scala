@@ -1,6 +1,8 @@
+import utils.AoC
+
 import scala.util.Try
 
-class Day6(day: Int) extends Routines {
+class Day6(day: Int) extends AoC {
   private def findMark(size: Int)(data: String) = {
     data
       .view

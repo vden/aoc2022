@@ -1,7 +1,9 @@
+import utils.AoC
+
 import scala.util.Try
 import scala.collection.mutable
 
-class Day10(day: Int) extends Routines {
+class Day10(day: Int) extends AoC {
   private def execute() = {
     withData(day) { data =>
       val state: mutable.ArrayBuffer[Int] = mutable.ArrayBuffer.from(List(1))

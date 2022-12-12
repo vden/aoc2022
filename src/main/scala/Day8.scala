@@ -1,7 +1,9 @@
+import utils.AoC
+
 import scala.util.Try
 import scala.collection.mutable
 
-class Day8(day: Int) extends Routines {
+class Day8(day: Int) extends AoC {
   private def execute() = {
     withData(day) { data =>
       val trees = data

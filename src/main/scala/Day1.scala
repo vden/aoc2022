@@ -1,6 +1,8 @@
+import utils.AoC
+
 import scala.util.Try
 
-class Day1(day: Int) extends Routines {
+class Day1(day: Int) extends AoC {
   private def execute(): Try[Unit] = {
     withData(day) { data =>
       val rations = data.foldLeft(List[Int](0))((acc: List[Int], v: String) => {

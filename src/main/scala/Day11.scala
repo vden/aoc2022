@@ -1,8 +1,10 @@
+import utils.AoC
+
 import java.util.regex.Pattern
 import scala.util.Try
 import scala.collection.mutable
 
-class Day11(day: Int) extends Routines {
+class Day11(day: Int) extends AoC {
 
   import Day11._
 

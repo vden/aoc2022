@@ -1,7 +1,9 @@
+import utils.AoC
+
 import scala.util.Try
 import scala.collection.mutable
 
-class Day7(day: Int) extends Routines {
+class Day7(day: Int) extends AoC {
 
   private class Node(var size: Int) {
     val nodes: mutable.Map[String, Node] = mutable.Map.empty

@@ -1,6 +1,8 @@
+import utils.AoC
+
 import scala.util.Try
 
-class Day3(day: Int) extends Routines {
+class Day3(day: Int) extends AoC {
   private def priority(n: Char) = {
     n.toByte match
     {

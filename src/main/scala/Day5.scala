@@ -1,7 +1,9 @@
+import utils.AoC
+
 import scala.collection.mutable
 import scala.util.Try
 
-class Day5(day: Int) extends Routines {
+class Day5(day: Int) extends AoC {
   private case class Command(num: Int, from: Int, to: Int)
 
   private def parseCommand(line: String): Command = {
