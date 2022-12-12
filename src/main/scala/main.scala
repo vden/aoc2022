@@ -12,9 +12,11 @@ def main(): Unit = {
   // Day8()
   // Day9()
   // Day10()
-  Day11() match {
+  // Day11()
+  Day12() match {
     case Success(_) => ()
     case Failure(exception) =>
       println(s"ERR: $exception")
+      println(exception.getStackTrace.mkString("\n"))
   }
 }
