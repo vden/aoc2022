@@ -15,7 +15,7 @@ trait Geometry {
     def down: Point = Point(this.x, this.y - 1)
   }
 
-  def A_Star[T](start: Point, end: Point, map: List[List[T]],
+  def A_Star[T](starts: Seq[Point], end: Point, map: Vector[Vector[T]],
                 condMap: (T, T) => Boolean, edgeCost: (Point, Point) => Int): Seq[Point] = {
     def score(from: Point) = (from.x - end.x).abs + (from.y - end.y).abs
 
@@ -26,18 +26,20 @@ trait Geometry {
       }
       path.toSeq
     }
-    
-    val openSet: mutable.PriorityQueue[Point] = mutable.PriorityQueue.from(List(start))(Ordering.by(score))
+
+    val openSet: mutable.PriorityQueue[Point] = mutable.PriorityQueue.from(starts)(Ordering.by(score))
 
     val cameFrom: mutable.HashMap[Point, Point] = mutable.HashMap.empty
 
     val gScore: mutable.Map[Point, Int] = mutable.HashMap.empty.withDefaultValue(Int.MaxValue)
-    gScore(start) = 0
-
     val fScore: mutable.Map[Point, Int] = mutable.HashMap.empty.withDefaultValue(Int.MaxValue)
-    fScore(start) = score(start)
 
-    var current = start
+    starts.foreach { s =>
+      gScore(s) = 0
+      fScore(s) = score(s)
+    }
+
+    var current = starts.head
     while (openSet.nonEmpty) {
       current = openSet.dequeue()
       if (current == end) {
