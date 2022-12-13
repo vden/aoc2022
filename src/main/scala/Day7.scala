@@ -1,7 +1,7 @@
 import utils.AoC
 
-import scala.util.Try
 import scala.collection.mutable
+import scala.util.Try
 
 class Day7(day: Int) extends AoC {
 

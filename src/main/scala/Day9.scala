@@ -1,7 +1,7 @@
 import utils.{AoC, Geometry}
 
-import scala.util.Try
 import scala.collection.mutable
+import scala.util.Try
 
 class Day9(day: Int) extends AoC with Geometry {
   private case class Move(dir: Char, num: Int)

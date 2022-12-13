@@ -1,12 +1,12 @@
 import utils.AoC
 
 import java.util.regex.Pattern
-import scala.util.Try
 import scala.collection.mutable
+import scala.util.Try
 
 class Day11(day: Int) extends AoC {
 
-  import Day11._
+  import Day11.*
 
   private def execute() = {
     withData(day) { _data =>

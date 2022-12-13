@@ -1,7 +1,7 @@
 import utils.{AoC, Geometry}
 
-import scala.util.Try
 import scala.collection.mutable
+import scala.util.Try
 
 class Day12(day: Int) extends AoC with Geometry {
 
