@@ -1,4 +1,4 @@
-import scala.util.{Success, Failure}
+import scala.util.{Failure, Success}
 
 @main
 def main(): Unit = {
@@ -13,7 +13,8 @@ def main(): Unit = {
   // Day9()
   // Day10()
   // Day11()
-  Day12() match {
+  // Day12()
+  Day13() match {
     case Success(_) => ()
     case Failure(exception) =>
       println(s"ERR: $exception")
