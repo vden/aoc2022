@@ -1,14 +1,14 @@
 import utils.{AoC, Geometry}
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day14(day: Int) extends AoC with Geometry {
+object Day14 extends AoC with Geometry {
   extension (p: Point) {
+    // to handle y-axis growing down
     def downN: Point = Point(p.x, p.y + 1)
   }
 
-  private def execute() = {
+  def execute(day: Int) = {
     withData(day) { data =>
 
       val walls = data
@@ -70,11 +70,5 @@ class Day14(day: Int) extends AoC with Geometry {
       val sandPoints = points.size - walls.size
       println(s"Day $day, 2nd part: $sandPoints")
     }
-  }
-}
-
-object Day14 {
-  def apply(): Try[Unit] = {
-    new Day14(14).execute()
   }
 }

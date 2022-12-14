@@ -1,50 +1,10 @@
 import utils.AoC
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day7(day: Int) extends AoC {
+object Day7 extends AoC {
 
-  private class Node(var size: Int) {
-    val nodes: mutable.Map[String, Node] = mutable.Map.empty
-
-    def printNodes(pad: Int): Unit = {
-      println(s" $size")
-      nodes.foreach { (k, v) =>
-        print(k.reverse.padTo(k.length + pad, '-').reverse)
-        v.printNodes(pad + 2)
-      }
-    }
-
-    def filterNodeValues(cond: => (Int => Boolean)): Seq[Int] = {
-      nodes.flatMap((_, v) => v.filterNodeValues(cond)).toSeq ++
-      nodes
-        .filter((_, v) => cond(v.size))
-        .map((_, v) => v.size)
-        .toSeq
-    }
-  }
-
-  private class Tree {
-    val head: Node = new Node(0)
-
-    def printTree(): Unit = {
-      print("/")
-      head.printNodes(0)
-    }
-
-    def filterTreeValues(cond: => (Int => Boolean)): Seq[Int] = head.filterNodeValues(cond)
-  }
-
-  private def updatePath(path: Array[String], dir: String) = {
-    dir match {
-      case ".." => path.dropRight(1)
-      case "/" => Array("")
-      case x => path :+ x
-    }
-  }
-
-  private def execute() = {
+  def execute(day: Int) = {
     withData(day) { data =>
 
       var cwd: Array[String] = Array.empty
@@ -82,10 +42,43 @@ class Day7(day: Int) extends AoC {
       println(s"Day 07, 2nd part: $min")
     }
   }
-}
 
-object Day7 {
-  def apply(): Try[Unit] = {
-    new Day7(7).execute()
+  private def updatePath(path: Array[String], dir: String) = {
+    dir match {
+      case ".." => path.dropRight(1)
+      case "/" => Array("")
+      case x => path :+ x
+    }
+  }
+
+  private class Node(var size: Int) {
+    val nodes: mutable.Map[String, Node] = mutable.Map.empty
+
+    def printNodes(pad: Int): Unit = {
+      println(s" $size")
+      nodes.foreach { (k, v) =>
+        print(k.reverse.padTo(k.length + pad, '-').reverse)
+        v.printNodes(pad + 2)
+      }
+    }
+
+    def filterNodeValues(cond: => (Int => Boolean)): Seq[Int] = {
+      nodes.flatMap((_, v) => v.filterNodeValues(cond)).toSeq ++
+        nodes
+          .filter((_, v) => cond(v.size))
+          .map((_, v) => v.size)
+          .toSeq
+    }
+  }
+
+  private class Tree {
+    val head: Node = new Node(0)
+
+    def printTree(): Unit = {
+      print("/")
+      head.printNodes(0)
+    }
+
+    def filterTreeValues(cond: => (Int => Boolean)): Seq[Int] = head.filterNodeValues(cond)
   }
 }

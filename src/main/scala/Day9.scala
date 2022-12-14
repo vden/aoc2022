@@ -1,31 +1,9 @@
 import utils.{AoC, Geometry}
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day9(day: Int) extends AoC with Geometry {
-  private case class Move(dir: Char, num: Int)
-
-  private def moveTail(point: Point, last: Point): Point = {
-    if (!point.isAround(last)) {
-      if (point.x == last.x) {
-        if (point.y > last.y) last.up else last.down
-      } else if (point.y == last.y) {
-        if (point.x > last.x) last.right else last.left
-      } else {
-        (point.x > last.x, point.y > last.y) match {
-          case (true, true) => last.right.up
-          case (true, false) => last.right.down
-          case (false, true) => last.left.up
-          case (false, false) => last.left.down
-        }
-      }
-    } else {
-      last
-    }
-  }
-
-  private def execute() = {
+object Day9 extends AoC with Geometry {
+  def execute(day: Int) = {
     withData(day) { data =>
       var head = Point(0, 0)
       val map: mutable.ArrayBuffer[Point] = mutable.ArrayBuffer.from(List(head))
@@ -78,10 +56,25 @@ class Day9(day: Int) extends AoC with Geometry {
       println(s"Day 09, 2nd part: ${map.toSet.size}")
     }
   }
-}
 
-object Day9 {
-  def apply(): Try[Unit] = {
-    new Day9(9).execute()
+  private def moveTail(point: Point, last: Point): Point = {
+    if (!point.isAround(last)) {
+      if (point.x == last.x) {
+        if (point.y > last.y) last.up else last.down
+      } else if (point.y == last.y) {
+        if (point.x > last.x) last.right else last.left
+      } else {
+        (point.x > last.x, point.y > last.y) match {
+          case (true, true) => last.right.up
+          case (true, false) => last.right.down
+          case (false, true) => last.left.up
+          case (false, false) => last.left.down
+        }
+      }
+    } else {
+      last
+    }
   }
+
+  private case class Move(dir: Char, num: Int)
 }

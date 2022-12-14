@@ -1,9 +1,7 @@
 import utils.AoC
 
-import scala.util.Try
-
-class Day1(day: Int) extends AoC {
-  private def execute(): Try[Unit] = {
+object Day1 extends AoC {
+  def execute(day: Int) = {
     withData(day) { data =>
       val rations = data.foldLeft(List[Int](0))((acc: List[Int], v: String) => {
         v match {
@@ -18,11 +16,5 @@ class Day1(day: Int) extends AoC {
 
       println(s"Day 01, 2nd part: $totalThreeTop")
     }
-  }
-}
-
-object Day1 {
-  def apply(): Try[Unit] = {
-    new Day1(1).execute()
   }
 }

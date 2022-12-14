@@ -1,26 +1,8 @@
 import utils.AoC
 
-import scala.util.Try
 
-class Day3(day: Int) extends AoC {
-  private def priority(n: Char) = {
-    n.toByte match
-    {
-      case x if x > 96 => x - 96
-      case x => x - 64 + 26
-    }
-  }
-
-  private def calculateScore(lines: Seq[String]) = {
-    lines
-      .map(_.toCharArray)
-      .map(Set.from)
-      .reduce { (acc, v) => acc & v }
-      .map(priority)
-      .head
-  }
-
-  private def execute() = {
+object Day3 extends AoC {
+  def execute(day: Int) = {
     withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
@@ -33,10 +15,21 @@ class Day3(day: Int) extends AoC {
       println(s"Day 03, 2nd part: $totalBadges")
     }
   }
-}
 
-object Day3 {
-  def apply(): Try[Unit] = {
-    new Day3(3).execute()
+  def calculateScore(lines: Seq[String]) = {
+    lines
+      .map(_.toCharArray)
+      .map(Set.from)
+      .reduce { (acc, v) => acc & v }
+      .map(priority)
+      .head
+  }
+
+  def priority(n: Char) = {
+    n.toByte match {
+      case x if x > 96 => x - 96
+      case x => x - 64 + 26
+    }
   }
 }
+

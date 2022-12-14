@@ -2,13 +2,9 @@ import utils.AoC
 
 import java.util.regex.Pattern
 import scala.collection.mutable
-import scala.util.Try
 
-class Day11(day: Int) extends AoC {
-
-  import Day11.*
-
-  private def execute() = {
+object Day11 extends AoC {
+  def execute(day: Int) = {
     withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
@@ -85,22 +81,20 @@ class Day11(day: Int) extends AoC {
       }
       .map(_.build)
   }
-}
 
-object Day11 {
-  case class Item(worry: Long)
+  private case class Item(worry: Long)
 
-  case class Monkey(items: mutable.ArrayBuffer[Item], op: Long => Long, test: Int, decisions: List[Int]) {
+  private case class Monkey(items: mutable.ArrayBuffer[Item], op: Long => Long, test: Int, decisions: List[Int]) {
 
     def passTo(i: Item): Int = {
       if (i.worry % this.test == 0) decisions.head else decisions.last
     }
   }
 
-  case class MonkeyBuilder(items: Seq[Item] = Seq.empty,
-                           op: Long => Long = (_) => 0,
-                           test: Int = 0,
-                           decisions: List[Int] = List.empty) {
+  private case class MonkeyBuilder(items: Seq[Item] = Seq.empty,
+                                   op: Long => Long = (_) => 0,
+                                   test: Int = 0,
+                                   decisions: List[Int] = List.empty) {
     def withOp(newOp: Long => Long) = this.copy(op = newOp)
 
     def withItems(newItems: Seq[Item]) = this.copy(items = newItems)
@@ -110,9 +104,5 @@ object Day11 {
     def withDecisions(newDecisions: List[Int]) = this.copy(decisions = newDecisions)
 
     def build = Monkey(mutable.ArrayBuffer(this.items: _*), this.op, this.test, this.decisions)
-  }
-
-  def apply(): Try[Unit] = {
-    new Day11(11).execute()
   }
 }

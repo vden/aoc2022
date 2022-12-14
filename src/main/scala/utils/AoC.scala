@@ -8,14 +8,16 @@ import scala.sys.env
 import scala.util.{Try, Using}
 
 trait AoC {
-  def withData(day: Int, debug: Boolean = false)(f : Iterator[String] => Unit): Try[Unit] = {
+  def execute(day: Int): Try[Unit]
+
+  def withData(day: Int, debug: Boolean = false)(f: Iterator[String] => Unit): Try[Unit] = {
     val source = if (debug) {
       Source.fromFile(s"src/inputs/day$day.txt")
     } else {
       Source.fromString(
         Http(s"https://adventofcode.com/2022/day/$day/input")
-        .header("Cookie", sys.env.getOrElse("AOC_COOKIE", ""))
-        .header("User-Agent", "Scala AoC routines @vden").asString.body
+          .header("Cookie", sys.env.getOrElse("AOC_COOKIE", ""))
+          .header("User-Agent", "Scala AoC routines @vden").asString.body
       )
     }
 

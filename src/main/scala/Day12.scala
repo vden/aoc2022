@@ -1,11 +1,10 @@
 import utils.{AoC, Geometry}
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day12(day: Int) extends AoC with Geometry {
+object Day12 extends AoC with Geometry {
 
-  private def execute() = {
+  def execute(day: Int) = {
     withData(day) { data =>
       var head: Point = Point(-1, -1)
       var end: Point = Point(-1, -1)
@@ -39,11 +38,5 @@ class Day12(day: Int) extends AoC with Geometry {
       val path2 = A_Star(starts, end, map, cond, cost)
       println(s"Day 12, 2nd part: ${path2.size - 1}")
     }
-  }
-}
-
-object Day12 {
-  def apply(): Try[Unit] = {
-    new Day12(12).execute()
   }
 }

@@ -1,32 +1,9 @@
 import utils.AoC
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day5(day: Int) extends AoC {
-  private case class Command(num: Int, from: Int, to: Int)
-
-  private def parseCommand(line: String): Command = {
-    val List(num, from, to) = line
-      .split(" ")
-      .filter(_.matches("\\d+"))
-      .toList
-    Command(num.toInt, from.toInt - 1, to.toInt - 1)
-  }
-
-  private def applyCommand9000(cargo: Seq[mutable.Stack[Char]], cmd: Command) = {
-    (1 to cmd.num).foreach { _ =>
-      cargo(cmd.to).push(cargo(cmd.from).pop())
-    }
-  }
-
-  private def applyCommand9001(cargo: Seq[mutable.Stack[Char]], cmd: Command) = {
-    (1 to cmd.num).map { _ => cargo(cmd.from).pop() }
-      .reverse
-      .foreach(cargo(cmd.to).push)
-  }
-
-  private def execute() = {
+object Day5 extends AoC {
+  def execute(day: Int) = {
     withData(day) { data =>
 
       val cargo: Vector[mutable.Stack[Char]] = data
@@ -58,10 +35,26 @@ class Day5(day: Int) extends AoC {
       println(s"Day 05, 2nd part: $baseline2")
     }
   }
-}
 
-object Day5 {
-  def apply(): Try[Unit] = {
-    new Day5(5).execute()
+  private def parseCommand(line: String): Command = {
+    val List(num, from, to) = line
+      .split(" ")
+      .filter(_.matches("\\d+"))
+      .toList
+    Command(num.toInt, from.toInt - 1, to.toInt - 1)
   }
+
+  private def applyCommand9000(cargo: Seq[mutable.Stack[Char]], cmd: Command) = {
+    (1 to cmd.num).foreach { _ =>
+      cargo(cmd.to).push(cargo(cmd.from).pop())
+    }
+  }
+
+  private def applyCommand9001(cargo: Seq[mutable.Stack[Char]], cmd: Command) = {
+    (1 to cmd.num).map { _ => cargo(cmd.from).pop() }
+      .reverse
+      .foreach(cargo(cmd.to).push)
+  }
+
+  private case class Command(num: Int, from: Int, to: Int)
 }

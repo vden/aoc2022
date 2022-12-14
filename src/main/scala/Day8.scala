@@ -1,10 +1,9 @@
 import utils.AoC
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day8(day: Int) extends AoC {
-  private def execute() = {
+object Day8 extends AoC {
+  def execute(day: Int) = {
     withData(day) { data =>
       val trees = data
         .map(_.map(_.toString.toInt).toVector).toVector
@@ -116,11 +115,5 @@ class Day8(day: Int) extends AoC {
 
       println(s"Day 08, 2nd part: ${points.max}")
     }
-  }
-}
-
-object Day8 {
-  def apply(): Try[Unit] = {
-    new Day8(8).execute()
   }
 }

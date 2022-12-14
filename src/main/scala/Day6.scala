@@ -1,16 +1,8 @@
 import utils.AoC
 
-import scala.util.Try
 
-class Day6(day: Int) extends AoC {
-  private def findMark(size: Int)(data: String) = {
-    data
-      .view
-      .sliding(size)
-      .indexWhere { x => x.toSet.size == size } + size
-  }
-
-  private def execute() = {
+object Day6 extends AoC {
+  def execute(day: Int) = {
     withData(day) { _data =>
       val (data1, data2) = _data.duplicate
 
@@ -21,10 +13,11 @@ class Day6(day: Int) extends AoC {
       println(s"Day 06, 2nd part: $startOfMessage")
     }
   }
-}
 
-object Day6 {
-  def apply(): Try[Unit] = {
-    new Day6(6).execute()
+  private def findMark(size: Int)(data: String) = {
+    data
+      .view
+      .sliding(size)
+      .indexWhere { x => x.toSet.size == size } + size
   }
 }

@@ -1,10 +1,9 @@
 import utils.AoC
 
 import scala.collection.mutable
-import scala.util.Try
 
-class Day10(day: Int) extends AoC {
-  private def execute() = {
+object Day10 extends AoC {
+  def execute(day: Int) = {
     withData(day) { data =>
       val state: mutable.ArrayBuffer[Int] = mutable.ArrayBuffer.from(List(1))
 
@@ -29,11 +28,5 @@ class Day10(day: Int) extends AoC {
         if ((cycle + 1) % 40 == 0) println()
       }
     }
-  }
-}
-
-object Day10 {
-  def apply(): Try[Unit] = {
-    new Day10(10).execute()
   }
 }
