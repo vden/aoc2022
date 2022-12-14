@@ -14,7 +14,8 @@ def main(): Unit = {
   // Day10()
   // Day11()
   // Day12()
-  Day13() match {
+  // Day13()
+  Day14() match {
     case Success(_) => ()
     case Failure(exception) =>
       println(s"ERR: $exception")

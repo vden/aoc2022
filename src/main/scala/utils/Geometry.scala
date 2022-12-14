@@ -15,6 +15,22 @@ trait Geometry {
     def down: Point = Point(this.x, this.y - 1)
   }
 
+  case class Line(from: Point, to: Point) {
+    def toPoints: Vector[Point] = {
+      val pairs = if (from.x == to.x) {
+        val step = if (from.y > to.y) then -1 else 1
+        (from.y to to.y by step).toVector.map(y => (from.x, y))
+      } else if (from.y == to.y) {
+        val step = if (from.x > to.x) then -1 else 1
+        (from.x to to.x by step).toVector.map(x => (x, from.y))
+      } else {
+        // slope, to be implemented
+        List()
+      }
+      pairs.map(Point.apply).toVector
+    }
+  }
+
   def A_Star[T](starts: Seq[Point], end: Point, map: Vector[Vector[T]],
                 condMap: (T, T) => Boolean, edgeCost: (Point, Point) => Int): Seq[Point] = {
     def score(from: Point) = (from.x - end.x).abs + (from.y - end.y).abs
