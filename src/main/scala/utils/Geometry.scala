@@ -66,6 +66,8 @@ trait Geometry {
     def up: Point = Point(this.x, this.y + 1)
 
     def down: Point = Point(this.x, this.y - 1)
+
+    def distanceTo(p: Point): Int = (p.x - this.x).abs + (p.y - this.y).abs
   }
 
   case class Line(from: Point, to: Point) {
@@ -82,5 +84,15 @@ trait Geometry {
       }
       pairs.map(Point.apply).toVector
     }
+  }
+
+  case class Diamond(c: Point, d: Int) {
+    def leftmost: Int = c.x - d
+
+    def rightmost: Int = c.x + d
+
+    def hasPoint(p: Point): Boolean = c.distanceTo(p) <= d
+
+    def skipByX(y: Int): Int = this.c.x + this.d - (this.c.y - y).abs
   }
 }

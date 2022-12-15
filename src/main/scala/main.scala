@@ -6,7 +6,7 @@ import scala.util.{Failure, Success}
 def main(): Unit = {
   // for (i <- 1 to AoC_2022.days.length) { AoC_2022.day(i) }
 
-  AoC_2022.day(14)
+  AoC_2022.day(15)
 }
 
 object AoC_2022 {
